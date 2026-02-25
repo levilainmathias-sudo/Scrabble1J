@@ -1,0 +1,103 @@
+﻿<Window x:Class="ScrabbleV1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScrabbleV1"
+        mc:Ignorable="d"
+        Title="JEU DU SCRABBLE" Height="300" Width="600" ResizeMode="NoResize">
+    <Window.Resources>
+        <!-- Style de base -->
+        <!-- Style de base -->
+        <Style x:Key="BaseStyle" TargetType="Control">
+            <Setter Property="Control.FontWeight" Value="DemiBold" />
+            <Setter Property="Control.Margin" Value="5" />
+        </Style>
+        <!-- Style pour TextBox basé sur le style de base -->
+        <Style TargetType="TextBox" BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#FFF0EBEB" />
+            <Setter Property="Height" Value="22"/>
+        </Style>
+        <!-- Style pour Label basé sur le style de base -->
+        <Style TargetType="Label" BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Control.FontSize" Value="14" />
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <!-- Style pour TextBlock basé sur le style de base -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Background" Value="#FFF0EBEB" />
+            <Setter Property="Height" Value="22"/>
+            <Setter Property="FontWeight" Value="DemiBold" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <!-- Style pour Button basé sur le style de base -->
+        <Style TargetType="Button" BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Background" Value="#FF6892B3" />
+            <Setter Property="Foreground" Value="#FFF0EBEB"  />
+            <Setter Property="Height" Value="22"/>
+            <Setter Property="Width" Value="100"/>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/FondScrabble.png"/>
+    </Window.Background>
+
+    <Grid Margin="20">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- COLONNE 0 -->
+        <Grid x:Name="PremCol" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <!-- LIGNE 0 : saisie du mot + boutons -->
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Ligne 0 -->
+                <Label Grid.Row="0" Grid.Column="0" Content="Entrez un mot"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtMot" Width="210" HorizontalAlignment="Left" />
+
+                <!-- Ligne 1 -->
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <Button x:Name="btnAutre" Content="AUTRE" Click="btnAutre_Click"/>
+                    <Button x:Name="btnOK" Content="OK" Click="btnOK_Click"/>
+                </StackPanel>
+            </Grid>
+
+
+            <!-- LIGNE 1 : affichage des résultats -->
+            <Grid Grid.Row="1" Margin="0,15,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Ligne 0 -->
+                <Label Grid.Row="0" Grid.Column="0" Content="Le mot rapporte"/>
+                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" >
+                    <TextBlock x:Name="txtPoints" Width="45"/>
+                    <Label Content="points"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
